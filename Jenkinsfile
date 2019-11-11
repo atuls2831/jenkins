@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'echo "Fail Call !"; exit 1'
+                bat 'echo "Fail Call !"; exit 1'
             }
         }
     }
