@@ -16,5 +16,12 @@ pipeline {
                 sh 'printenv'
             }
         }
+         stage('Test') {
+            steps {
+                echo "My Database engine is ${DB_ENGINE}"
+                echo "My DISABLE_AUTH is ${DISABLE_AUTH}"
+                sh 'printenv'
+            }
+        }
     }
 }
