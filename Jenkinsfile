@@ -1,10 +1,35 @@
 pipeline {
-    agent {
-        label '!windows'
-    }
+            kubernetes {
+            label 'agent-test-aws-cred'
+            yaml '''
+                    apiVersion: v1
+                    kind: Pod
+                    spec:
+                      containers:
+                      - name: "jnlp"
+                        resources:
+                          requests:
+                            cpu: 200m
+                            memory: 400Mi
+                          limits:
+                            cpu: 400m
+                            memory: 800Mi    
+                      - name: kaniko
+                        image: gcr.io/kaniko-project/executor:debug 
+                        resources:
+                          requests:
+                            cpu: 200m
+                            memory: 400Mi
+                          limits:
+                            cpu: 400m
+                            memory: 800Mi       
+                        command:
+                        - /busybox/sh
+                        tty: true
+                    '''
 
     environment {
-        DISABLE_AUTH = 'false'
+        DISABLE_AUTH = 'True'
         DB_ENGINE    = 'sqlite'
     }
 
