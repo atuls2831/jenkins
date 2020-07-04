@@ -34,6 +34,7 @@ pipeline {
     environment {
         DISABLE_AUTH = 'True'
         DB_ENGINE    = 'sqlite'
+        DOCKER_HUB = 'gcr.io/tokyo-receiver-264005/'
     }
 
     stages {
@@ -59,7 +60,7 @@ pipeline {
                 sh '''
                 printenv
                 ls
-                /kaniko/executor -f Dockerfile --force --destination=https://hub.docker.com/repository/docker/atuls/pushedimage/imagename:$BUILD_NUMBER
+                /kaniko/executor -f Dockerfile --force --destination=${DOCKER_HUB}/image:$BUILD_NUMBER
                 '''
             }
                 
