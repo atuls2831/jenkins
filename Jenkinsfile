@@ -60,7 +60,7 @@ pipeline {
                 sh '''
                 printenv
                 ls
-                /kaniko/executor -f Dockerfile --force --destination=${DOCKER_HUB}/image:$BUILD_NUMBER
+                /kaniko/executor -f Dockerfile --force --destination=${DOCKER_HUB}image:$BUILD_NUMBER
                 '''
             }
                 
