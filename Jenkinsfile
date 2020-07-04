@@ -44,6 +44,17 @@ pipeline {
                 sh 'printenv'
             }
         }
+        stage('My sample stage') {
+            steps {
+               container('kaniko') {
+                sh '''
+                printenv
+                ls
+                '''
+            }
+                
+            }
+        }
          stage('Test') {
             steps {
                 echo "My Database engine is ${DB_ENGINE}"
