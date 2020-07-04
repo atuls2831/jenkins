@@ -50,6 +50,7 @@ pipeline {
                 sh '''
                 printenv
                 ls
+                docker version
                 '''
             }
                 
