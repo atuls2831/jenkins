@@ -50,7 +50,7 @@ pipeline {
                 sh '''
                 printenv
                 ls
-                /kaniko/executor -f Dockerfile
+                /kaniko/executor -f Dockerfile --no-push
                 '''
             }
                 
